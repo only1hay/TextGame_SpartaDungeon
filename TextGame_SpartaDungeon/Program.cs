@@ -1,9 +1,12 @@
 ﻿using System.Net.Security;
+using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 namespace TextGame_SpartaDungeon
 {
-    struct player
+    struct Player
     {
         public int level;
         public string Name;
@@ -59,15 +62,25 @@ namespace TextGame_SpartaDungeon
 
         static void states()
         {
-            player player1;
+            Player player1;
             player1.level = 01;
             player1.Name = "Chad";
             player1.attackStat = 10;
             player1.defenseStat = 5;
             player1.hp = 100;
             player1.gold=1500;
+
             player1.PrintInfo();
         }
+
+        class Inventory()
+        {
+            public string ItemName { get; set; }
+            public string ItemType { get; set; }
+            public int ItemStat { get; set; }
+            public string ItemDescription { get; set; }
+
+        }            
 
         static void Main(string[] args)
         {
@@ -96,6 +109,48 @@ namespace TextGame_SpartaDungeon
                         Console.WriteLine();
                         Console.WriteLine("인벤토리");
                         Console.WriteLine("보유 증인 아이템을 관리할 수 있습니다.");
+                        Console.WriteLine();
+                        Console.WriteLine("아이템 목록");
+                        Console.WriteLine();
+
+                        Inventory item1 = new Inventory();
+
+                        item1.ItemName = "무쇠갑옷";
+                        item1.ItemType = "방어력";
+                        item1.ItemStat = 5; ;
+                        item1.ItemDescription = "무쇠로 만들어져 튼튼한 갑옷입니다.";
+                        Console.Write("  -  "+item1.ItemName);
+                        Console.Write(" | "+item1.ItemType);
+                        Console.Write("  +  "+item1.ItemStat.ToString());
+                        Console.Write("  |  "+item1.ItemDescription);
+
+                        Console.WriteLine();
+
+                        Inventory item2 = new Inventory();
+
+                        item2.ItemName = "스파르타의 창";
+                        item2.ItemType = "공격력";
+                        item2.ItemStat = 7; ;
+                        item2.ItemDescription = "스파르타의 전사들이 사용했다는 전설의 창입니다.";
+                        Console.Write("  -  " + item2.ItemName);
+                        Console.Write(" | " + item2.ItemType);
+                        Console.Write("  +  " + item2.ItemStat.ToString());
+                        Console.Write("  |  " + item2.ItemDescription);
+
+                        Console.WriteLine();
+
+                        Inventory item3 = new Inventory();
+
+                        item3.ItemName = "낡은 검";
+                        item3.ItemType = "공격력";
+                        item3.ItemStat = 2; ;
+                        item3.ItemDescription = "쉽게 볼 수 있는 낡은 검 입니다.";
+                        Console.Write("  -  " + item3.ItemName);
+                        Console.Write(" | " + item3.ItemType);
+                        Console.Write("  +  " + item3.ItemStat.ToString());
+                        Console.Write("  |  " + item3.ItemDescription);
+
+                        Console.WriteLine();
 
                         Console.WriteLine() ;
                         Console.WriteLine("1. 장착관리");
